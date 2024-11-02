@@ -60,8 +60,6 @@ int main() {
 
     long long results[3][4] = {};
     long long total[3][4] = {};
-    int x = 0;
-    int y = 0;
 
     // output header
     cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
@@ -76,20 +74,24 @@ int main() {
         readingVec(testv);
         auto end = high_resolution_clock::now();
         auto durationV = duration_cast<microseconds>(end - start);
-        results[x][y] = durationV.count();
-        total[x][y] = results[x][y];
+        results[0][0] = durationV.count();
+        total[0][0] = results[0][0];
         totalReadV += durationV.count();
 
         start = high_resolution_clock::now();
         readingList(testl);
         end = high_resolution_clock::now();
         auto durationL = duration_cast<microseconds>(end - start);
+        results[0][1] = durationL.count();
+        total[0][1] = results[0][1];
         totalReadL += durationL.count();
 
         start = high_resolution_clock::now();
         readingSet(tests);
         end = high_resolution_clock::now();
         auto durationS = duration_cast<microseconds>(end - start);
+        results[0][2] = durationS.count();
+        total[0][2] = results[0][2];
         totalReadS += durationS.count();
 
         // sorting race (changed to microseconds due to insert operations completing too quickly)
@@ -97,31 +99,44 @@ int main() {
         sortingVec(testv);
         end = high_resolution_clock::now();
         auto sortDurationV = duration_cast<microseconds>(end - start);
+        results[1][0] = sortDurationV.count();
+        total[1][0] = results[1][0];
         totalSortV += sortDurationV.count();
 
         start = high_resolution_clock::now();
         sortingList(testl);
         end = high_resolution_clock::now();
         auto sortDurationL = duration_cast<microseconds>(end - start);
+        results[1][1] = sortDurationL.count();
+        total[1][1] = results[1][1];
         totalSortL += sortDurationL.count();
+
+        results[1][2] = sortingSet(tests);
+        total[1][2] += results[1][2];
 
         // inserting race (changed to microseconds due to insert operations completing too quickly)
         start = high_resolution_clock::now();
         insertingVec(testv, "TESTCODE");
         end = high_resolution_clock::now();
         auto insertDurationV = duration_cast<microseconds>(end - start);
+        results[2][0] = insertDurationV.count();
+        total[2][0] = results[2][0];
         totalInsertV += insertDurationV.count();
         
         start = high_resolution_clock::now();
         insertingList(testl, "TESTCODE");
         end = high_resolution_clock::now();
         auto insertDurationL = duration_cast<microseconds>(end - start);
+        results[2][1] = insertDurationL.count();
+        total[2][1] = results[2][1];
         totalInsertL += insertDurationL.count();
 
         start = high_resolution_clock::now();
         insertingSet(tests, "TESTCODE");
         end = high_resolution_clock::now();
         auto insertDurationS = duration_cast<microseconds>(end - start);
+        results[2][2] = insertDurationS.count();
+        total[2][2] = results[2][2];
         totalInsertS += insertDurationS.count();
 
         // deleting race (changed to microseconds due to insert operations completing too quickly)
@@ -129,6 +144,7 @@ int main() {
         deletingVec(testv);
         end = high_resolution_clock::now();
         auto deleteDurationV = duration_cast<microseconds>(end - start);
+        
         totalDeleteV += deleteDurationV.count();
 
         start = high_resolution_clock::now();
@@ -144,17 +160,6 @@ int main() {
         totalDeleteS += deleteDurationS.count();
 
     }
-    // read output
-    cout << left << setw(10) << "Read" << setw(10) << total[0][0] << setw(10) << totalReadL / RUNNUM << setw(10) << totalReadS / RUNNUM << endl;
-
-    // sort output
-    cout << left << setw(10) << "Sort" << setw(10) << totalSortV / RUNNUM << setw(10) << totalSortL / RUNNUM << setw(10) << "-1" << endl;
-
-    // insert output
-    cout << left << setw(10) << "Insert" << setw(10) << totalInsertV / RUNNUM << setw(10) << totalInsertL / RUNNUM << setw(10) << totalInsertS / RUNNUM << endl;
-    
-    // delete output
-    cout << left << setw(10) << "Delete" << setw(10) << totalDeleteV / RUNNUM << setw(10) << totalDeleteL / RUNNUM << setw(10) << totalDeleteS / RUNNUM << endl;
 
     return 0;
 }
