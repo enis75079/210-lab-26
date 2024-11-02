@@ -144,19 +144,24 @@ int main() {
         deletingVec(testv);
         end = high_resolution_clock::now();
         auto deleteDurationV = duration_cast<microseconds>(end - start);
-        
+        results[3][0] = deleteDurationV.count();
+        total[3][0] = results[3][0];
         totalDeleteV += deleteDurationV.count();
 
         start = high_resolution_clock::now();
         deletingList(testl);
         end = high_resolution_clock::now();
         auto deleteDurationL = duration_cast<microseconds>(end - start);
+        results[3][1] = deleteDurationL.count();
+        total[3][1] = results[3][1];
         totalDeleteL += deleteDurationL.count();
 
         start = high_resolution_clock::now();
         deletingSet(tests);
         end = high_resolution_clock::now();
         auto deleteDurationS = duration_cast<microseconds>(end - start);
+        results[3][2] = deleteDurationS.count();
+        total[3][2] = results[3][2];
         totalDeleteS += deleteDurationS.count();
 
     }
