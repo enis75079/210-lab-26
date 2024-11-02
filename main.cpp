@@ -42,7 +42,7 @@ int deletingSet(set<string>&);
 int main() {
     const int RUNNUM = 15;
 
-    long long int totalReadV = 0;
+    long long totalReadV = 0;
     int totalReadL = 0;
     int totalReadS = 0;
 
@@ -71,7 +71,7 @@ int main() {
     readingVec(testv);
     auto end = high_resolution_clock::now();
     auto durationV = duration_cast<microseconds>(end - start);
-    totalReadV += durationV;
+    totalReadV += durationV.count();
 
     start = high_resolution_clock::now();
     readingList(testl);
