@@ -138,16 +138,16 @@ int main() {
 
     }
     // read output
-    cout << left << setw(10) << "Read" << setw(10) << totalReadV / RUNNUM << setw(10) << totalReadL << setw(10) << totalReadS << endl;
+    cout << left << setw(10) << "Read" << setw(10) << totalReadV / RUNNUM << setw(10) << totalReadL / RUNNUM << setw(10) << totalReadS / RUNNUM << endl;
 
     // sort output
-    cout << left << setw(10) << "Sort" << setw(10) << totalSortV / RUNNUM << setw(10) << totalSortL << setw(10) << "-1" << endl;
+    cout << left << setw(10) << "Sort" << setw(10) << totalSortV / RUNNUM << setw(10) << totalSortL / RUNNUM << setw(10) << "-1" << endl;
 
     // insert output
-    cout << left << setw(10) << "Insert" << setw(10) << totalInsertV / RUNNUM << setw(10) << totalInsertL << setw(10) << totalInsertS << endl;
+    cout << left << setw(10) << "Insert" << setw(10) << totalInsertV / RUNNUM << setw(10) << totalInsertL / RUNNUM << setw(10) << totalInsertS / RUNNUM << endl;
     
     // delete output
-    cout << left << setw(10) << "Delete" << setw(10) << totalDeleteV / RUNNUM << setw(10) << totalDeleteL << setw(10) << totalDeleteS << endl;
+    cout << left << setw(10) << "Delete" << setw(10) << totalDeleteV / RUNNUM << setw(10) << totalDeleteL / RUNNUM << setw(10) << totalDeleteS / RUNNUM << endl;
 
     return 0;
 }
