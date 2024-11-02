@@ -159,7 +159,7 @@ int main() {
     for (int i = 0; i < 4; i++) {
         cout << left << setw(10) << opTitles[i];
         for (int j = 0; j < 3; j++) {
-            cout << setw(10) << total[i][j] ;
+            cout << setw(10) << total[i][j];
         }
         cout << endl;
     }
