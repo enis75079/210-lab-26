@@ -58,6 +58,7 @@ int main() {
     long long totalDeleteL = 0;
     long long totalDeleteS = 0;
 
+    // 3D vector storing the results of each data structure after each run
     long long results[3][4][RUNNUM] = {};
     long long total[3][4] = {};
 
@@ -153,10 +154,11 @@ int main() {
         total[3][2] += results[3][2][i];
     }
 
-    // calc
     cout << "Number of simulations: " << RUNNUM << endl;
     cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
     string opTitles[4] = {"Read", "Sort", "Insert", "Delete"};
+    
+    // output information with a nested loop
     for (int i = 0; i < 4; i++) {
         cout << left << setw(10) << opTitles[i];
         for (int j = 0; j < 3; j++) {
