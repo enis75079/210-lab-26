@@ -58,6 +58,11 @@ int main() {
     long long totalDeleteL = 0;
     long long totalDeleteS = 0;
 
+    long long results[3][4] = {};
+    long long total[3][4] = {};
+    int x = 0;
+    int y = 0;
+
     // output header
     cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
     for (int i = 0; i < RUNNUM; i++) {
@@ -71,6 +76,8 @@ int main() {
         readingVec(testv);
         auto end = high_resolution_clock::now();
         auto durationV = duration_cast<microseconds>(end - start);
+        results[x][y] = durationV.count();
+        total[x][y] = results[x][y];
         totalReadV += durationV.count();
 
         start = high_resolution_clock::now();
@@ -138,7 +145,7 @@ int main() {
 
     }
     // read output
-    cout << left << setw(10) << "Read" << setw(10) << totalReadV / RUNNUM << setw(10) << totalReadL / RUNNUM << setw(10) << totalReadS / RUNNUM << endl;
+    cout << left << setw(10) << "Read" << setw(10) << total[0][0] << setw(10) << totalReadL / RUNNUM << setw(10) << totalReadS / RUNNUM << endl;
 
     // sort output
     cout << left << setw(10) << "Sort" << setw(10) << totalSortV / RUNNUM << setw(10) << totalSortL / RUNNUM << setw(10) << "-1" << endl;
