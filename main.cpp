@@ -40,14 +40,32 @@ int deletingSet(set<string>&);
 
 // main function
 int main() {
+    const int RUNNUM = 15;
+    
+    int totalReadV = 0;
+    int totalReadL = 0;
+    int totalReadS = 0;
+
+    int totalSortV = 0;
+    int totalSortL = 0;
+    int totalSortS = 0;
+
+    int totalInsertV = 0;
+    int totalInsertL = 0;
+    int totalInsertS = 0;
+
+    int totalDeleteV = 0;
+    int totalDeleteL = 0;
+    int totalDeleteS = 0;
+
+    // output header
+    cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
+    
     // create vector, list, and set object
     vector<string> testv;
     list<string> testl;
     set<string> tests;
 
-    // output header
-    cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
-    
     // reading race (changed to microseconds due to insert operations completing too quickly)
     auto start = high_resolution_clock::now();
     readingVec(testv);
