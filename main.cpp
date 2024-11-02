@@ -74,21 +74,21 @@ int main() {
         auto end = high_resolution_clock::now();
         auto durationV = duration_cast<microseconds>(end - start);
         results[0][0][i] = durationV.count();
-        total[0][0] = results[0][0][i];
+        total[0][0] += results[0][0][i];
 
         start = high_resolution_clock::now();
         readingList(testl);
         end = high_resolution_clock::now();
         auto durationL = duration_cast<microseconds>(end - start);
         results[0][1][i] = durationL.count();
-        total[0][1] = results[0][1][i];
+        total[0][1] += results[0][1][i];
 
         start = high_resolution_clock::now();
         readingSet(tests);
         end = high_resolution_clock::now();
         auto durationS = duration_cast<microseconds>(end - start);
         results[0][2][i] = durationS.count();
-        total[0][2] = results[0][2][i];
+        total[0][2] += results[0][2][i];
 
         // sorting race (changed to microseconds due to insert operations completing too quickly)
         start = high_resolution_clock::now();
@@ -96,7 +96,7 @@ int main() {
         end = high_resolution_clock::now();
         auto sortDurationV = duration_cast<microseconds>(end - start);
         results[1][0][i] = sortDurationV.count();
-        total[1][0] = results[1][0][i];
+        total[1][0] += results[1][0][i];
 
         start = high_resolution_clock::now();
         sortingList(testl);
@@ -114,21 +114,21 @@ int main() {
         end = high_resolution_clock::now();
         auto insertDurationV = duration_cast<microseconds>(end - start);
         results[2][0][i] = insertDurationV.count();
-        total[2][0] = results[2][0][i];
+        total[2][0] += results[2][0][i];
         
         start = high_resolution_clock::now();
         insertingList(testl, "TESTCODE");
         end = high_resolution_clock::now();
         auto insertDurationL = duration_cast<microseconds>(end - start);
         results[2][1][i] = insertDurationL.count();
-        total[2][1] = results[2][1][i];
+        total[2][1] += results[2][1][i];
 
         start = high_resolution_clock::now();
         insertingSet(tests, "TESTCODE");
         end = high_resolution_clock::now();
         auto insertDurationS = duration_cast<microseconds>(end - start);
         results[2][2][i] = insertDurationS.count();
-        total[2][2] = results[2][2][i];
+        total[2][2] += results[2][2][i];
 
         // deleting race (changed to microseconds due to insert operations completing too quickly)
         start = high_resolution_clock::now();
@@ -136,23 +136,24 @@ int main() {
         end = high_resolution_clock::now();
         auto deleteDurationV = duration_cast<microseconds>(end - start);
         results[3][0][i] = deleteDurationV.count();
-        total[3][0] = results[3][0][i];
+        total[3][0] += results[3][0][i];
 
         start = high_resolution_clock::now();
         deletingList(testl);
         end = high_resolution_clock::now();
         auto deleteDurationL = duration_cast<microseconds>(end - start);
         results[3][1][i] = deleteDurationL.count();
-        total[3][1] = results[3][1][i];
+        total[3][1] += results[3][1][i];
 
         start = high_resolution_clock::now();
         deletingSet(tests);
         end = high_resolution_clock::now();
         auto deleteDurationS = duration_cast<microseconds>(end - start);
         results[3][2][i] = deleteDurationS.count();
-        total[3][2] = results[3][2][i];
+        total[3][2] += results[3][2][i];
     }
 
+    // calc
     cout << "Number of simulations: " << RUNNUM << endl;
     cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
     string opTitles[4] = {"Read", "Sort", "Insert", "Delete"};
