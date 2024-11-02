@@ -43,20 +43,20 @@ int main() {
     const int RUNNUM = 15;
 
     long long totalReadV = 0;
-    int totalReadL = 0;
-    int totalReadS = 0;
+    long long totalReadL = 0;
+    long long totalReadS = 0;
 
-    int totalSortV = 0;
-    int totalSortL = 0;
-    int totalSortS = 0;
+    long long totalSortV = 0;
+    long long totalSortL = 0;
+    long long totalSortS = 0;
 
-    int totalInsertV = 0;
-    int totalInsertL = 0;
-    int totalInsertS = 0;
+    long long totalInsertV = 0;
+    long long totalInsertL = 0;
+    long long totalInsertS = 0;
 
-    int totalDeleteV = 0;
-    int totalDeleteL = 0;
-    int totalDeleteS = 0;
+    long long totalDeleteV = 0;
+    long long totalDeleteL = 0;
+    long long totalDeleteS = 0;
 
     // output header
     cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
@@ -77,14 +77,16 @@ int main() {
     readingList(testl);
     end = high_resolution_clock::now();
     auto durationL = duration_cast<microseconds>(end - start);
+    totalReadL += durationL.count();
 
     start = high_resolution_clock::now();
     readingSet(tests);
     end = high_resolution_clock::now();
     auto durationS = duration_cast<microseconds>(end - start);
+    totalReadS += durationS.count();
 
     // read output
-    cout << left << setw(10) << "Read" << setw(10) << durationV.count() << setw(10) << durationL.count() << setw(10) << durationS.count() << endl;
+    cout << left << setw(10) << "Read" << setw(10) << totalReadV << setw(10) << totalReadL << setw(10) << totalReadL << endl;
 
     // sorting race (changed to microseconds due to insert operations completing too quickly)
     start = high_resolution_clock::now();
