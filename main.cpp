@@ -163,9 +163,14 @@ int main() {
         results[3][2] = deleteDurationS.count();
         total[3][2] = results[3][2];
         totalDeleteS += deleteDurationS.count();
-
     }
 
+    cout << "Number of simulations" << RUNNUM << endl;
+    cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
+    string 
+    for (int i = 0; i < 4; i++) {
+        cout << left << setw(10) << endl;
+    }
     return 0;
 }
 
