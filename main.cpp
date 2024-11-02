@@ -165,7 +165,7 @@ int main() {
         totalDeleteS += deleteDurationS.count();
     }
 
-    cout << "Number of simulations" << RUNNUM << endl;
+    cout << "Number of simulations: " << RUNNUM << endl;
     cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
     string opTitles[4] = {"Read", "Sort", "Insert", "Delete"};
     for (int i = 0; i < 4; i++) {
