@@ -86,46 +86,52 @@ int main() {
     totalReadS += durationS.count();
 
     // read output
-    cout << left << setw(10) << "Read" << setw(10) << totalReadV << setw(10) << totalReadL << setw(10) << totalReadL << endl;
+    cout << left << setw(10) << "Read" << setw(10) << totalReadV << setw(10) << totalReadL << setw(10) << totalReadS << endl;
 
     // sorting race (changed to microseconds due to insert operations completing too quickly)
     start = high_resolution_clock::now();
     sortingVec(testv);
     end = high_resolution_clock::now();
     auto sortDurationV = duration_cast<microseconds>(end - start);
+    totalSortV += sortDurationV.count();
 
     start = high_resolution_clock::now();
     sortingList(testl);
     end = high_resolution_clock::now();
     auto sortDurationL = duration_cast<microseconds>(end - start);
+    totalSortL += sortDurationL.count();
 
     // sort output
-    cout << left << setw(10) << "Sort" << setw(10) << sortDurationV.count() << setw(10) << sortDurationL.count() << setw(10) << sortingSet(tests) << endl;
+    cout << left << setw(10) << "Sort" << setw(10) << totalSortV << setw(10) << totalSortL << setw(10) << sortingSet(tests) << endl;
 
     // inserting race (changed to microseconds due to insert operations completing too quickly)
     start = high_resolution_clock::now();
     insertingVec(testv, "TESTCODE");
     end = high_resolution_clock::now();
     auto insertDurationV = duration_cast<microseconds>(end - start);
-
+    totalInsertV += insertDurationV.count();
+    
     start = high_resolution_clock::now();
     insertingList(testl, "TESTCODE");
     end = high_resolution_clock::now();
     auto insertDurationL = duration_cast<microseconds>(end - start);
+    totalInsertL += insertDurationL.count();
 
     start = high_resolution_clock::now();
     insertingSet(tests, "TESTCODE");
     end = high_resolution_clock::now();
     auto insertDurationS = duration_cast<microseconds>(end - start);
+    totalInsertS += insertDurationS.count();
 
     // insert output
-    cout << left << setw(10) << "Insert" << setw(10) << insertDurationV.count() << setw(10) << insertDurationL.count() << setw(10) << insertDurationS.count() << endl;
+    cout << left << setw(10) << "Insert" << setw(10) << totalInsertV << setw(10) << totalInsertL << setw(10) << totalInsertS << endl;
 
     // deleting race (changed to microseconds due to insert operations completing too quickly)
     start = high_resolution_clock::now();
     deletingVec(testv);
     end = high_resolution_clock::now();
     auto deleteDurationV = duration_cast<microseconds>(end - start);
+    totalDeleteV += deleteDurationV.count();
 
     start = high_resolution_clock::now();
     deletingList(testl);
