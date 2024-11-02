@@ -137,14 +137,16 @@ int main() {
     deletingList(testl);
     end = high_resolution_clock::now();
     auto deleteDurationL = duration_cast<microseconds>(end - start);
+    totalDeleteL += deleteDurationL.count();
 
     start = high_resolution_clock::now();
     deletingSet(tests);
     end = high_resolution_clock::now();
     auto deleteDurationS = duration_cast<microseconds>(end - start);
+    totalDeleteS += deleteDurationS.count();
 
     // delete output
-    cout << left << setw(10) << "Delete" << setw(10) << deleteDurationV.count() << setw(10) << deleteDurationL.count() << setw(10) << deleteDurationS.count() << endl;
+    cout << left << setw(10) << "Delete" << setw(10) << totalDeleteV << setw(10) << totalDeleteL << setw(10) << totalDeleteS << endl;
 
     return 0;
 }
