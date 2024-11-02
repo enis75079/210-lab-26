@@ -62,7 +62,6 @@ int main() {
     long long total[3][4] = {};
 
     // output header
-    cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
     for (int i = 0; i < RUNNUM; i++) {
         // create vector, list, and set object
         vector<string> testv;
@@ -76,7 +75,6 @@ int main() {
         auto durationV = duration_cast<microseconds>(end - start);
         results[0][0] = durationV.count();
         total[0][0] = results[0][0];
-        totalReadV += durationV.count();
 
         start = high_resolution_clock::now();
         readingList(testl);
@@ -84,7 +82,6 @@ int main() {
         auto durationL = duration_cast<microseconds>(end - start);
         results[0][1] = durationL.count();
         total[0][1] = results[0][1];
-        totalReadL += durationL.count();
 
         start = high_resolution_clock::now();
         readingSet(tests);
@@ -92,7 +89,6 @@ int main() {
         auto durationS = duration_cast<microseconds>(end - start);
         results[0][2] = durationS.count();
         total[0][2] = results[0][2];
-        totalReadS += durationS.count();
 
         // sorting race (changed to microseconds due to insert operations completing too quickly)
         start = high_resolution_clock::now();
@@ -101,7 +97,6 @@ int main() {
         auto sortDurationV = duration_cast<microseconds>(end - start);
         results[1][0] = sortDurationV.count();
         total[1][0] = results[1][0];
-        totalSortV += sortDurationV.count();
 
         start = high_resolution_clock::now();
         sortingList(testl);
@@ -109,7 +104,6 @@ int main() {
         auto sortDurationL = duration_cast<microseconds>(end - start);
         results[1][1] = sortDurationL.count();
         total[1][1] = results[1][1];
-        totalSortL += sortDurationL.count();
 
         results[1][2] = sortingSet(tests);
         total[1][2] += results[1][2];
@@ -121,7 +115,6 @@ int main() {
         auto insertDurationV = duration_cast<microseconds>(end - start);
         results[2][0] = insertDurationV.count();
         total[2][0] = results[2][0];
-        totalInsertV += insertDurationV.count();
         
         start = high_resolution_clock::now();
         insertingList(testl, "TESTCODE");
@@ -129,7 +122,6 @@ int main() {
         auto insertDurationL = duration_cast<microseconds>(end - start);
         results[2][1] = insertDurationL.count();
         total[2][1] = results[2][1];
-        totalInsertL += insertDurationL.count();
 
         start = high_resolution_clock::now();
         insertingSet(tests, "TESTCODE");
@@ -137,7 +129,6 @@ int main() {
         auto insertDurationS = duration_cast<microseconds>(end - start);
         results[2][2] = insertDurationS.count();
         total[2][2] = results[2][2];
-        totalInsertS += insertDurationS.count();
 
         // deleting race (changed to microseconds due to insert operations completing too quickly)
         start = high_resolution_clock::now();
@@ -146,7 +137,6 @@ int main() {
         auto deleteDurationV = duration_cast<microseconds>(end - start);
         results[3][0] = deleteDurationV.count();
         total[3][0] = results[3][0];
-        totalDeleteV += deleteDurationV.count();
 
         start = high_resolution_clock::now();
         deletingList(testl);
@@ -154,7 +144,6 @@ int main() {
         auto deleteDurationL = duration_cast<microseconds>(end - start);
         results[3][1] = deleteDurationL.count();
         total[3][1] = results[3][1];
-        totalDeleteL += deleteDurationL.count();
 
         start = high_resolution_clock::now();
         deletingSet(tests);
@@ -162,17 +151,17 @@ int main() {
         auto deleteDurationS = duration_cast<microseconds>(end - start);
         results[3][2] = deleteDurationS.count();
         total[3][2] = results[3][2];
-        totalDeleteS += deleteDurationS.count();
     }
 
     cout << "Number of simulations: " << RUNNUM << endl;
     cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
     string opTitles[4] = {"Read", "Sort", "Insert", "Delete"};
     for (int i = 0; i < 4; i++) {
-        cout << left << setw(10) << opTitles[i] << endl;
+        cout << left << setw(10) << opTitles[i];
         for (int j = 0; j < 3; j++) {
             cout << setw(10) << total[i][j];
         }
+        cout << endl;
     }
     return 0;
 }
