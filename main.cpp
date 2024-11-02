@@ -167,9 +167,12 @@ int main() {
 
     cout << "Number of simulations" << RUNNUM << endl;
     cout << left << setw(10) << "Operation" << setw(10) << "Vector" << setw(10) << "List" << setw(10) << "Set" << endl;
-    string 
+    string opTitles[4] = {"Read", "Sort", "Insert", "Delete"};
     for (int i = 0; i < 4; i++) {
-        cout << left << setw(10) << endl;
+        cout << left << setw(10) << opTitles[i] << endl;
+        for (int j = 0; j < 3; j++) {
+            cout << setw(10) << total[i][j];
+        }
     }
     return 0;
 }
